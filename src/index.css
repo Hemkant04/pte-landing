@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+/* Rotating Gradient Animation for GradientButton */
+@keyframes rotating-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rotating-gradient {
+  background: linear-gradient(
+    90deg,
+    #ffcd75 0%,
+    #ff9d4d 25%,
+    #ffcd75 50%,
+    #ff9d4d 75%,
+    #ffcd75 100%
+  );
+  background-size: 300% 100%;
+  animation: rotating-gradient 3s ease infinite;
+  box-shadow: 0 0 20px rgba(255, 205, 117, 0.3);
+}
+
+.rotating-gradient:hover {
+  box-shadow: 0 0 30px rgba(255, 205, 117, 0.5);
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
