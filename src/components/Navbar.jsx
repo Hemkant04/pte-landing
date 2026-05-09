@@ -19,8 +19,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="PTE Nepal Logo" className="w-10 h-10 rounded-lg object-contain" />
-            <span className="text-xl font-bold text-zinc-900 dark:text-white transition-colors duration-300">PTE Nepal</span>
+            <img src="logo.png" alt="Apeuni Digital Nepal Logo" className="w-10 h-10 rounded-lg object-contain" />
+            <span className="text-xl font-bold text-zinc-900 dark:text-white transition-colors duration-300">Apeuni Digital Nepal</span>
           </div>
 
           {/* Desktop Navigation */}

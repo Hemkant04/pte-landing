@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: 'Date Booking Service',
-    price: '27,000',
+    price: '29,000',
     period: 'service fee',
     description: 'Let us handle your PTE registration',
     features: [
@@ -40,8 +40,8 @@ const plans = [
   },
   {
     name: 'Combo Package',
-    price: '27799',
-    period: 'save Rs. 300',
+    price: '30000',
+    period: 'save Rs. 100',
     description: '10 days Apeuni + Date booking',
     features: [
       'Everything in Mock Test Package',
