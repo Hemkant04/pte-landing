@@ -4,7 +4,7 @@ import GradientButton from './ui/GradientButton.jsx';
 const plans = [
   {
     name: 'Mock Test Package',
-    price: '2,350',
+    price: '2,300',
     period: 'one-month',
     description: 'Perfect for self-paced practice',
     features: [
@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: 'Date Booking Service',
-    price: '29,000',
+    price: '28,500',
     period: 'service fee',
     description: 'Let us handle your PTE registration',
     features: [
@@ -40,8 +40,8 @@ const plans = [
   },
   {
     name: 'Combo Package',
-    price: '30000',
-    period: 'save Rs. 100',
+    price: '29000',
+    period: 'save Rs. 500',
     description: '10 days Apeuni + Date booking',
     features: [
       'Everything in Mock Test Package',
