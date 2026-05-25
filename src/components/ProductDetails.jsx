@@ -1,4 +1,5 @@
 import { Check, PlayCircle, Calendar, Target, Users, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import GradientButton from './ui/GradientButton.jsx';
 
 export default function ProductDetails() {
@@ -63,11 +64,11 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            <a href="#pricing" className="block w-full">
+            <Link to="/practice-package" className="block w-full">
               <GradientButton width="100%" height="52px">
                 Get Mock Tests
               </GradientButton>
-            </a>
+            </Link>
           </div>
 
           {/* Booking Service */}
@@ -108,11 +109,11 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            <a href="tel:+9779762419564" className="block w-full">
+            <Link to="/date-booking" className="block w-full">
               <GradientButton width="100%" height="52px">
                 Contact for Booking
               </GradientButton>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

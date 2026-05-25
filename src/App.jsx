@@ -1,35 +1,17 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Benefits from './components/Benefits'
-import HowItWorks from './components/HowItWorks'
-import ProductDetails from './components/ProductDetails'
-import Testimonials from './components/Testimonials'
-import Pricing from './components/Pricing'
-import FAQs from './components/FAQs'
-import FinalCTA from './components/FinalCTA'
-import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
-import ChatWidget from './components/ChatWidget'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import HomePage from './pages/HomePage'
+import PracticePackagePage from './pages/PracticePackagePage'
+import DateBookingPage from './pages/DateBookingPage'
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      <Navbar />
-      <main>
-        <Hero />
-        <Benefits />
-        <HowItWorks />
-        <ProductDetails />
-        <Testimonials />
-        <Pricing />
-        <FAQs />
-        <FinalCTA />
-      </main>
-      <Footer />
-      <ScrollToTop />
-      <ChatWidget />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/practice-package" element={<PracticePackagePage />} />
+        <Route path="/date-booking" element={<DateBookingPage />} />
+      </Route>
+    </Routes>
   )
 }
-
-export default App

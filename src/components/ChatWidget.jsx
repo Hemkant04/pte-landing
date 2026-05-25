@@ -8,13 +8,13 @@ const predefinedResponses = [
   // 🔹 1. Greeting
   {
     keywords: ['hi', 'hello', 'hey', 'namaste', 'greetings'],
-    answer: `Namaste! 👋 Welcome to PTE Nepal.
+    answer: `Namaste! 👋 Welcome to Apeuni Digital Nepal.
 
 I can help you with:
-• Mock Tests
-• Date Booking
-• Pricing
-• Preparation
+• Practice Packages (Apeuni, AlfaPTE, Gurully)
+• Date Booking (PTE, IELTS, Duolingo)
+• Pricing & Plans
+• Payment & Support
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Chat on WhatsApp
@@ -24,69 +24,96 @@ Chat on WhatsApp
   // 🔹 2. Pricing
   {
     keywords: ['price','pricing','cost','how much','fee','charge','package','plan'],
-    answer: `We offer:
+    answer: `📦 Practice Packages:
 
-1. Mock Test – Rs. 2,350  
-2. Booking – Rs. 27,000  
-3. Combo – Rs. 27,799 (10 days access) 
+🔹 AlfaPTE
+3d-299 | 5d-499 | 7d-599 | 10d-799
+15d-999 | 30d-1,799 | 60d-2,600 | 90d-3,499
+
+🔹 Apeuni
+3d-399 | 5d-549 | 7d-699 | 10d-949
+15d-1,349 | 30d-2,199 | 60d-3,500 | 90d-4,249
+
+🔹 Gurully
+7d-849 | 10d-1,049 | 15d-1,249
+30d-1,799 | 60d-2,349
+
+📅 Date Booking:
+
+🔹 PTE Academic — Rs. 28,000
+🔹 PTE Core — Rs. 29,500
+🔹 PTE UKVI — Rs. 28,500
+🔹 IDP IELTS Paper — Rs. 34,000
+🔹 IDP IELTS Computer — Rs. 33,500
+🔹 British Council IELTS Paper — Rs. 33,000
+🔹 British Council IELTS Computer — Rs. 32,500
+🔹 Duolingo — Rs. 8,000
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Get Started
 </button>`
   },
 
-  // 🔹 3. Mock Test
+  // 🔹 3. Practice Packages
   {
-    keywords: ['mock test','practice','pte practice','apeuni'],
-    answer: `Mock Test includes:
+    keywords: ['mock test','practice','pte practice','apeuni','alfapte','gurully','package'],
+    answer: `We offer practice packages on 3 platforms:
 
-• Unlimited tests  
-• Real exam simulation  
-• AI scoring  
-• Reports  
+🔹 Apeuni — Real exam simulation with AI scoring
+🔹 AlfaPTE — Extensive question bank
+🔹 Gurully — All-in-one test platform
+
+Choose duration: 3 to 90 days.
+Prices start from Rs. 299.
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
-Start Practice
+View All Plans
 </button>`
   },
 
   // 🔹 4. Booking
   {
-    keywords: ['booking','exam date','slot booking'],
-    answer: `We help you book your PTE exam easily.
+    keywords: ['booking','exam date','slot booking','ielts','duolingo','pte'],
+    answer: `We help you book these exams:
 
-• Available dates  
-• Full support  
-• Center details  
+🔹 PTE Academic — Rs. 28,000
+🔹 PTE Core — Rs. 29,500
+🔹 PTE UKVI — Rs. 28,500
+🔹 IDP IELTS — Paper Rs. 34,000 / Computer Rs. 33,500
+🔹 British Council IELTS — Paper Rs. 33,000 / Computer Rs. 32,500
+🔹 Duolingo — Rs. 8,000
+
+Available centers: Kathmandu, Pokhara, Butwal, Itahari
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Book Now
 </button>`
   },
 
-  // 🔹 5. Combo
+  // 🔹 5. Centers
   {
-    keywords: ['combo','full package'],
-    answer: `Combo Package:
+    keywords: ['center','location','ktm','pokhara','butwal','ithari','itahari'],
+    answer: `📍 Test Centers:
 
-• Mock + Booking  
-• Priority support  
-• Save Rs. 300  
+🏙 Kathmandu: Alfabeta, Alfabeta 2, KCM, Universal, British
+🏙 Pokhara: CMC, La Grande
+🏙 Butwal: KCM
+🏙 Itahari: Namuna College
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
-Get Combo
+Book Your Slot
 </button>`
   },
 
   // 🔹 6. Payment
   {
-    keywords: ['payment','pay','fonepay'],
+    keywords: ['payment','pay','fonepay','qr'],
     answer: `Payment methods:
 
 • Fonepay QR  
 • Bank transfer  
 
-After payment, send screenshot.
+After payment, you'll be redirected to WhatsApp with your booking details.
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Send Screenshot
@@ -95,9 +122,10 @@ Send Screenshot
 
   // 🔹 7. Contact
   {
-    keywords: ['contact','phone','whatsapp','number'],
+    keywords: ['contact','phone','whatsapp','number','email'],
     answer: `Contact us:
 
+📞 9762419564
 📧 info.pte4u@gmail.com  
 📍 Lalitpur, Nepal  
 
@@ -111,7 +139,7 @@ Chat Now
     keywords: ['buy','purchase','start now','interested'],
     answer: `Great! 🎯
 
-We’ll guide you step-by-step.
+We'll guide you through the booking process step-by-step. Select your package or exam on our website and complete the form.
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Start Now
@@ -121,12 +149,14 @@ Start Now
   // 🔹 9. Fallback
   {
     keywords: [],
-    answer: `Sorry, I didn’t understand 😅
+    answer: `Sorry, I didn't understand 😅
 
 Try asking about:
-• Price
-• Mock test
-• Booking
+• Price & packages
+• Mock tests (Apeuni, AlfaPTE, Gurully)
+• Exam booking (PTE, IELTS, Duolingo)
+• Test centers
+• Payment
 
 <button onclick="window.open('https://wa.me/9779762419564','_blank')">
 Chat with Us
@@ -135,7 +165,7 @@ Chat with Us
 
 ];
 
-const defaultResponse = "I'm not sure about that. You can ask me about:\n\n• Pricing and packages\n• Mock test details\n• Date booking service\n• Contact information\n• Results and scores\n\nOr contact us directly at 9762419564 for more help!";
+const defaultResponse = "I'm not sure about that. You can ask me about:\n\n• Practice packages (Apeuni, AlfaPTE, Gurully)\n• Exam booking (PTE, IELTS, Duolingo)\n• Pricing & duration plans\n• Test centers\n• Payment & Contact\n\nOr contact us directly at 9762419564 for more help!";
 
 function findResponse(userMessage) {
   const message = userMessage.toLowerCase();
