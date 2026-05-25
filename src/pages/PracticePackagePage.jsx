@@ -80,24 +80,24 @@ export default function PracticePackagePage() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-4 transition-colors duration-300">
+        <div className="text-center mb-10 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
             Choose Your{' '}
             <span className="bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-500 dark:from-white dark:via-white dark:to-zinc-400 bg-clip-text text-transparent">
               Practice Package
             </span>
           </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
+          <p className="text-sm sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
             Select a platform that suits your preparation style. Unlock unlimited mock tests and track your progress.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-8 max-w-5xl mx-auto">
           {packages.map((pkg) => (
             <button
               key={pkg.id}
               onClick={() => setSelected(pkg)}
-              className="group text-left bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative"
+              className="group text-left bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-5 sm:p-8 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative"
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -107,14 +107,14 @@ export default function PracticePackagePage() {
                   </span>
                 </div>
               )}
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pkg.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                <span className="text-2xl font-bold text-white">{pkg.name[0]}</span>
+              <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${pkg.color} flex items-center justify-center mb-3 sm:mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
+                <span className="text-xl sm:text-2xl font-bold text-white">{pkg.name[0]}</span>
               </div>
-              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-1 transition-colors duration-300">{pkg.name}</h3>
-              <p className="text-sm font-medium text-accent mb-3">{pkg.tagline}</p>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed transition-colors duration-300">{pkg.description}</p>
-              <div className="mt-6">
-                <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-1 transition-colors duration-300">{pkg.name}</h3>
+              <p className="text-xs sm:text-sm font-medium text-accent mb-2 sm:mb-3">{pkg.tagline}</p>
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed transition-colors duration-300">{pkg.description}</p>
+              <div className="mt-4 sm:mt-6">
+                <span className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">
                   View Plans & Pricing →
                 </span>
               </div>
