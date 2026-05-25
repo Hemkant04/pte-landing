@@ -11,6 +11,7 @@ import {
   Gem,
   Cpu
 } from 'lucide-react';
+import { Link } from 'react-router-dom'
 import { AnimatedNumber } from '../hooks/useCountUp.jsx';
 import GradientButton from './ui/GradientButton.jsx';
 
@@ -92,23 +93,23 @@ export default function Hero() {
             </p>
 
             <div className="animate-fade-in delay-400 flex flex-col sm:flex-row gap-4 items-center">
-              <a href="#pricing">
+              <Link to="/practice-package">
                 <GradientButton width="180px" height="50px">
                   <span className="flex items-center gap-2">
                     Start Mock Test
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </GradientButton>
-              </a>
+              </Link>
               
-              <a href="https://wa.me/message/S54RZTK2GC5OH1" target="_blank">
+              <Link to="/date-booking">
                 <GradientButton width="180px" height="50px">
                   <span className="flex items-center gap-2">
                     <Play className="w-4 h-4" />
                     Book PTE Date
                   </span>
                 </GradientButton>
-              </a>
+              </Link>
             </div>
           </div>
 

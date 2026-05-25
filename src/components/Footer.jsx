@@ -35,7 +35,6 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><a href="#benefits" className="hover:text-accent transition-colors">Benefits</a></li>
               <li><a href="#how-it-works" className="hover:text-accent transition-colors">How It Works</a></li>
-              <li><a href="#pricing" className="hover:text-accent transition-colors">Pricing</a></li>
               <li><a href="#faqs" className="hover:text-accent transition-colors">FAQs</a></li>
             </ul>
           </div>
