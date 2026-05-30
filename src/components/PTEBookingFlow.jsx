@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { X, GraduationCap, CalendarDays, ArrowLeft, Info, Upload, CreditCard, Check, ChevronRight } from 'lucide-react'
+
 import GradientButton from './ui/GradientButton'
 
 const pteTypes = [
@@ -81,14 +82,14 @@ export default function PTEBookingFlow({ onClose }) {
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-8 pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg">
-              <GraduationCap className="w-6 h-6 text-white" />
+        <div className="flex items-center justify-between px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg flex-shrink-0">
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">PTE Booking</h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-2xl font-bold text-zinc-900 dark:text-white truncate">PTE Booking</h2>
+              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 truncate">
                 {step === 'select-type' && 'Select your PTE exam type'}
                 {step === 'exam-option' && 'First exam or rebook?'}
                 {step === 'account-status' && 'Do you have a Pearson PTE account?'}
@@ -102,9 +103,9 @@ export default function PTEBookingFlow({ onClose }) {
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-5 sm:p-8">
           {/* Step indicator */}
-          <div className="flex items-center gap-2 mb-8 text-xs font-medium text-zinc-400">
+          <div className="flex items-center gap-1 sm:gap-2 mb-6 sm:mb-8 text-[10px] sm:text-xs font-medium text-zinc-400 overflow-x-auto">
             {['Type', 'Option', 'Details', 'Payment'].map((label, i) => {
               const stepIndex = step === 'select-type' ? 0 : step === 'exam-option' ? 0 : step === 'account-status' ? 1 : step === 'form' ? 2 : 3
               return (
@@ -232,7 +233,10 @@ export default function PTEBookingFlow({ onClose }) {
               {/* Date & Center fields (common to all) */}
               <div>
                 <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Preferred Exam Date</label>
-                <input type="date" value={examDate} onChange={(e) => setExamDate(e.target.value)} required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+                <div className="relative">
+                  <CalendarDays className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400 pointer-events-none" />
+                  <input type="date" value={examDate} onChange={(e) => setExamDate(e.target.value)} required className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all [color-scheme:light] dark:[color-scheme:dark]" />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Test City</label>
@@ -356,12 +360,12 @@ export default function PTEBookingFlow({ onClose }) {
                 </p>
                 <div className="flex justify-center mb-4">
                   <div className="w-48 h-48 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-white/10 flex items-center justify-center">
-                    <img src="qr.png" alt="Payment QR Code" className="w-40 h-40 object-contain" onError={(e) => {
+                    <img src="/qr.jpeg" alt="Payment QR Code" className="w-40 h-40 object-contain" onError={(e) => {
                       e.target.style.display = 'none'
                       e.target.nextSibling.style.display = 'flex'
                     }} />
                     <div className="hidden w-40 h-40 items-center justify-center text-sm text-zinc-400">
-                      <p className="text-center">Place your QR code image as <code className="text-accent">public/qr.png</code></p>
+                      <p className="text-center">Place your QR code image as <code className="text-accent">public/qr.jpeg</code></p>
                     </div>
                   </div>
                 </div>
