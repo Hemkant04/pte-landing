@@ -11,6 +11,7 @@ export default function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Practice Package', href: '/practice-package' },
     { label: 'Date Booking', href: '/date-booking' },
+    { label: 'Downloads', href: '/downloads' },
   ];
 
   const linkClass = ({ isActive }) =>
@@ -25,9 +26,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-2">
-            <img src="logo.png" alt="Apeuni Digital Nepal Logo" className="w-10 h-10 rounded-lg object-contain" />
-            <span className="text-xl font-bold text-zinc-900 dark:text-white transition-colors duration-300">Apeuni Digital Nepal</span>
+          <NavLink to="/" className="flex items-center gap-2 min-w-0">
+            <img src="logo.png" alt="Apeuni Digital Nepal Logo" className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-contain flex-shrink-0" />
+            <span className="text-base sm:text-xl font-bold text-zinc-900 dark:text-white truncate transition-colors duration-300">Apeuni Digital Nepal</span>
           </NavLink>
 
           {/* Desktop Navigation */}

@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react'
-import { X, CreditCard, Check, ChevronRight, ArrowLeft, Upload, Info } from 'lucide-react'
+import { X, CreditCard, Check, ChevronRight, ArrowLeft, Upload, Info, CalendarDays } from 'lucide-react'
 import GradientButton from './ui/GradientButton'
 
 export default function ExamBookingForm({ examLabel, price, color, onClose, showPassport = true }) {
   const [step, setStep] = useState('form')
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [passportFile, setPassportFile] = useState(null)
+  const [examDate, setExamDate] = useState('')
   const fileRef = useRef(null)
 
   const updateForm = (field, value) => setForm(prev => ({ ...prev, [field]: value }))
@@ -14,6 +15,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
     let msg = `*New Booking Request*%0A`
     msg += `%0A*Exam:* ${examLabel}`
     msg += `%0A*Fee:* Rs. ${price}`
+    msg += `%0A*Preferred Date:* ${examDate || 'Not selected'}`
     msg += `%0A*Name:* ${form.name}`
     msg += `%0A*Email:* ${form.email}`
     msg += `%0A*Phone:* ${form.phone}`
@@ -36,14 +38,14 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
         className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-8 pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
-          <div className="flex items-center gap-4">
-            <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg`}>
-              <Info className="w-6 h-6 text-white" />
+        <div className="flex items-center justify-between px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+              <Info className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">Complete Booking</h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">{examLabel}</p>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-2xl font-bold text-zinc-900 dark:text-white truncate">Complete Booking</h2>
+              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 truncate">{examLabel}</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors">
@@ -51,8 +53,8 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
           </button>
         </div>
 
-        <div className="p-8">
-          <div className="flex items-center gap-2 mb-8 text-xs font-medium text-zinc-400">
+        <div className="p-5 sm:p-8">
+          <div className="flex items-center gap-2 mb-6 sm:mb-8 text-xs font-medium text-zinc-400">
             {['Details', 'Payment'].map((label, i) => {
               const stepIndex = step === 'form' ? 0 : 1
               return (
@@ -95,6 +97,14 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
                 <input type="tel" value={form.phone} onChange={(e) => updateForm('phone', e.target.value)} placeholder="Your phone number" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Preferred Exam Date</label>
+                <div className="relative">
+                  <CalendarDays className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400 pointer-events-none" />
+                  <input type="date" value={examDate} onChange={(e) => setExamDate(e.target.value)} required className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all [color-scheme:light] dark:[color-scheme:dark]" />
+                </div>
+              </div>
+
               {showPassport && (
                 <div>
                   <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Passport (Photo or PDF)</label>
@@ -109,7 +119,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
 
               <button
                 onClick={() => setStep('payment')}
-                disabled={!form.name || !form.email || !form.phone || (showPassport && !passportFile)}
+                disabled={!form.name || !form.email || !form.phone || !examDate || (showPassport && !passportFile)}
                 className="w-full disabled:opacity-40"
               >
                 <GradientButton width="100%" height="48px">
@@ -135,12 +145,12 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
                 </p>
                 <div className="flex justify-center mb-4">
                   <div className="w-48 h-48 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-white/10 flex items-center justify-center">
-                    <img src="qr.png" alt="Payment QR Code" className="w-40 h-40 object-contain" onError={(e) => {
+                    <img src="/qr.jpeg" alt="Payment QR Code" className="w-40 h-40 object-contain" onError={(e) => {
                       e.target.style.display = 'none'
                       e.target.nextSibling.style.display = 'flex'
                     }} />
                     <div className="hidden w-40 h-40 items-center justify-center text-sm text-zinc-400">
-                      <p className="text-center">Place QR code as <code className="text-accent">public/qr.png</code></p>
+                      <p className="text-center">Place QR code as <code className="text-accent">public/qr.jpeg</code></p>
                     </div>
                   </div>
                 </div>
@@ -154,6 +164,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
                 </h4>
                 <div className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <p><span className="text-zinc-500">Exam:</span> {examLabel}</p>
+                  <p><span className="text-zinc-500">Preferred Date:</span> {examDate || 'Not selected'}</p>
                   <p><span className="text-zinc-500">Name:</span> {form.name}</p>
                   <p><span className="text-zinc-500">Email:</span> {form.email}</p>
                   <p><span className="text-zinc-500">Phone:</span> {form.phone}</p>

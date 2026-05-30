@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { X, Check, Clock, Sparkles } from 'lucide-react'
 import GradientButton from '../components/ui/GradientButton'
 import ExamBookingForm from '../components/ExamBookingForm'
-
 const packages = [
   {
     id: 'apeuni',
@@ -10,6 +9,7 @@ const packages = [
     tagline: 'Premium PTE Mock Tests',
     description: 'Real PTE exam simulation with AI-powered scoring and detailed analytics.',
     color: 'from-emerald-500 to-teal-600',
+    logoSrc: '/apeuni.png',
     popular: true,
   },
   {
@@ -18,6 +18,7 @@ const packages = [
     tagline: 'Comprehensive PTE Practice',
     description: 'Extensive question bank with section-wise practice and progress tracking.',
     color: 'from-blue-500 to-indigo-600',
+    logoSrc: '/alfapte.png',
     popular: false,
   },
   {
@@ -26,6 +27,7 @@ const packages = [
     tagline: 'All-in-One Test Platform',
     description: 'Mock tests, practice sets, and performance reports in one place.',
     color: 'from-purple-500 to-pink-600',
+    logoSrc: '/gurully.png',
     popular: false,
   },
 ]
@@ -74,18 +76,18 @@ export default function PracticePackagePage() {
   const [bookingForm, setBookingForm] = useState(null)
 
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-24 pb-20 transition-colors duration-300">
+    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-20 sm:pt-24 pb-16 sm:pb-20 transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-zinc-50 to-white dark:from-zinc-900 dark:via-zinc-950 dark:to-black transition-colors duration-300" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
-            Choose Your{' '}
-            <span className="bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-500 dark:from-white dark:via-white dark:to-zinc-400 bg-clip-text text-transparent">
-              Practice Package
-            </span>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
+            <span className="bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
+              Choose Your
+            </span>{' '}
+            Practice Package
           </h1>
           <p className="text-sm sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
             Select a platform that suits your preparation style. Unlock unlimited mock tests and track your progress.
@@ -107,8 +109,8 @@ export default function PracticePackagePage() {
                   </span>
                 </div>
               )}
-              <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${pkg.color} flex items-center justify-center mb-3 sm:mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                <span className="text-xl sm:text-2xl font-bold text-white">{pkg.name[0]}</span>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl overflow-hidden mb-3 sm:mb-6 group-hover:scale-110 transition-transform shadow-lg ring-1 ring-zinc-200/50 dark:ring-white/10">
+                <img src={pkg.logoSrc} alt={pkg.name} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-1 transition-colors duration-300">{pkg.name}</h3>
               <p className="text-xs sm:text-sm font-medium text-accent mb-2 sm:mb-3">{pkg.tagline}</p>
@@ -139,10 +141,10 @@ export default function PracticePackagePage() {
             className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-8 pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
+            <div className="flex items-center justify-between px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
               <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${selected.color} flex items-center justify-center shadow-lg`}>
-                  <span className="text-xl font-bold text-white">{selected.name[0]}</span>
+                <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 ring-1 ring-zinc-200/50 dark:ring-white/10">
+                  <img src={selected.logoSrc} alt={selected.name} className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">{selected.name}</h2>
@@ -157,8 +159,8 @@ export default function PracticePackagePage() {
               </button>
             </div>
 
-            <div className="p-8">
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-6 flex items-center gap-2">
+            <div className="p-5 sm:p-8">
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-white mb-4 sm:mb-6 flex items-center gap-2">
                 <Clock className="w-5 h-5 text-accent" />
                 Select Duration
               </h3>
@@ -184,12 +186,12 @@ export default function PracticePackagePage() {
                 ))}
               </div>
 
-              <div className="mt-8 p-5 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-200/50 dark:border-white/10">
+              <div className="mt-6 sm:mt-8 p-4 sm:p-5 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-200/50 dark:border-white/10">
                 <h4 className="font-semibold text-zinc-900 dark:text-white mb-3 flex items-center gap-2">
                   <Check className="w-4 h-4 text-accent" />
                   What's Included
                 </h4>
-                <ul className="grid sm:grid-cols-2 gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />Unlimited scored mock tests</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />AI-powered scoring & feedback</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />Real PTE exam simulation</li>
