@@ -88,7 +88,7 @@ export default function PTEBookingFlow({ onClose }) {
               <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="min-w-0">
-              <h2 className="text-lg sm:text-2xl font-bold text-zinc-900 dark:text-white truncate">PTE Booking</h2>
+              <h2 className="text-lg sm:text-2xl font-bold truncate bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">PTE Booking</h2>
               <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 truncate">
                 {step === 'select-type' && 'Select your PTE exam type'}
                 {step === 'exam-option' && 'First exam or rebook?'}
@@ -135,12 +135,12 @@ export default function PTEBookingFlow({ onClose }) {
                       <Info className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-zinc-900 dark:text-white">{type.name}</h3>
+                      <h3 className="font-bold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">{type.name}</h3>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400">{type.desc}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-lg font-bold text-accent">Rs. {type.price}</span>
+                    <span className="text-lg font-bold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Rs. {type.price}</span>
                     <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:text-accent transition-colors" />
                   </div>
                 </button>
@@ -156,22 +156,22 @@ export default function PTEBookingFlow({ onClose }) {
                   <Info className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-zinc-900 dark:text-white">{selectedType.name}</p>
-                  <p className="text-xs text-zinc-500">Rs. {selectedType.price}</p>
+                  <p className="font-semibold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">{selectedType.name}</p>
+                  <p className="text-xs bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent font-bold">Rs. {selectedType.price}</p>
                 </div>
               </div>
               <button
                 onClick={() => { setExamOption('first'); setStep('account-status') }}
                 className="w-full text-left bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
               >
-                <h3 className="font-bold text-zinc-900 dark:text-white mb-1">First Exam</h3>
+                <h3 className="font-bold mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">First Exam</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">I'm taking PTE for the first time</p>
               </button>
               <button
                 onClick={() => { setExamOption('rebook'); setStep('form') }}
                 className="w-full text-left bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
               >
-                <h3 className="font-bold text-zinc-900 dark:text-white mb-1">Rebook</h3>
+                <h3 className="font-bold mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Rebook</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">I have taken PTE before and want to rebook</p>
               </button>
               <button onClick={() => setStep('select-type')} className="text-sm text-zinc-500 hover:text-accent transition-colors flex items-center gap-1">
@@ -188,21 +188,21 @@ export default function PTEBookingFlow({ onClose }) {
                   <Info className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-zinc-900 dark:text-white">{selectedType.name} — First Exam</p>
+                  <p className="font-semibold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">{selectedType.name} — First Exam</p>
                 </div>
               </div>
               <button
                 onClick={() => { setAccountStatus('has-account'); setStep('form') }}
                 className="w-full text-left bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
               >
-                <h3 className="font-bold text-zinc-900 dark:text-white mb-1">Already have a Pearson PTE Account</h3>
+                <h3 className="font-bold mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Already have a Pearson PTE Account</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">I already created my Pearson profile</p>
               </button>
               <button
                 onClick={() => { setAccountStatus('need-account'); setStep('form') }}
                 className="w-full text-left bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
               >
-                <h3 className="font-bold text-zinc-900 dark:text-white mb-1">Need to Create PTE Account</h3>
+                <h3 className="font-bold mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Need to Create PTE Account</h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">I don't have a Pearson PTE account yet</p>
               </button>
               <button onClick={() => setStep('exam-option')} className="text-sm text-zinc-500 hover:text-accent transition-colors flex items-center gap-1">
@@ -220,7 +220,7 @@ export default function PTEBookingFlow({ onClose }) {
                     <Info className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm text-zinc-900 dark:text-white">{selectedType.name}</p>
+                    <p className="font-semibold text-sm bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">{selectedType.name}</p>
                     <p className="text-xs text-zinc-500">
                       {examOption === 'first' ? 'First Exam' : 'Rebook'}
                       {examOption === 'first' && accountStatus === 'has-account' ? ' — Has Account' : ''}
@@ -351,7 +351,7 @@ export default function PTEBookingFlow({ onClose }) {
           {step === 'payment' && (
             <div className="space-y-6">
               <div className="bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10">
-                <h3 className="font-semibold text-zinc-900 dark:text-white mb-1 flex items-center gap-2">
+                <h3 className="font-semibold mb-1 flex items-center gap-2 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
                   <CreditCard className="w-5 h-5 text-accent" />
                   Payment Details
                 </h3>
@@ -373,7 +373,7 @@ export default function PTEBookingFlow({ onClose }) {
               </div>
 
               <div className="bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10">
-                <h4 className="font-semibold text-zinc-900 dark:text-white mb-3 flex items-center gap-2">
+                <h4 className="font-semibold mb-3 flex items-center gap-2 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
                   <Check className="w-4 h-4 text-accent" />
                   Booking Summary
                 </h4>
@@ -388,7 +388,7 @@ export default function PTEBookingFlow({ onClose }) {
                   {form.email && <p><span className="text-zinc-500">Email:</span> {form.email}</p>}
                   {form.phone && <p><span className="text-zinc-500">Phone:</span> {form.phone}</p>}
                   <p><span className="text-zinc-500">Passport:</span> {passportFile ? passportFile.name : 'Attached'}</p>
-                  <p className="pt-2 font-semibold text-accent">Total: Rs. {selectedType.price}</p>
+                  <p className="pt-2 font-bold text-base bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Total: Rs. {selectedType.price}</p>
                 </div>
               </div>
 

@@ -76,7 +76,7 @@ export default function PracticePackagePage() {
   const [bookingForm, setBookingForm] = useState(null)
 
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-20 sm:pt-24 pb-16 sm:pb-20 transition-colors duration-300">
+    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-20 sm:pt-24 pb-16 sm:pb-20 transition-colors duration-300 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-zinc-50 to-white dark:from-zinc-900 dark:via-zinc-950 dark:to-black transition-colors duration-300" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
@@ -85,9 +85,9 @@ export default function PracticePackagePage() {
         <div className="text-center mb-10 sm:mb-16">
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
             <span className="bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Choose Your
+              Buy
             </span>{' '}
-            Practice Package
+            MockTest
           </h1>
           <p className="text-sm sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
             Select a platform that suits your preparation style. Unlock unlimited mock tests and track your progress.
@@ -130,8 +130,10 @@ export default function PracticePackagePage() {
           examLabel={bookingForm.label}
           price={bookingForm.price}
           color={bookingForm.color}
+          logoSrc={bookingForm.logoSrc}
           onClose={() => setBookingForm(null)}
           showPassport={false}
+          showExamDate={false}
         />
       )}
 
@@ -164,24 +166,24 @@ export default function PracticePackagePage() {
                 <Clock className="w-5 h-5 text-accent" />
                 Select Duration
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                 {planPricing[selected.id].durations.map(({ days, price }) => (
                   <button
                     key={days}
                     onClick={() => {
-                      setBookingForm({ label: `${selected.name} — ${days} Days`, price: price.toLocaleString(), color: selected.color })
+                      setBookingForm({ label: `${selected.name} — ${days} Days`, price: price.toLocaleString(), color: selected.color, logoSrc: selected.logoSrc })
                       setSelected(null)
                     }}
-                    className="group block bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 text-center w-full"
+                    className="group relative flex-1 min-w-[90px] sm:min-w-[110px] bg-white dark:bg-white/[0.06] rounded-2xl px-3 sm:px-4 py-3 border border-zinc-200/60 dark:border-white/10 hover:border-accent/50 hover:shadow-xl hover:-translate-y-1 hover:bg-accent/[0.04] dark:hover:bg-accent/[0.08] transition-all duration-300 text-center"
                   >
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-white mb-1">{days}</div>
-                    <div className="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3">Days</div>
-                    <div className="text-lg font-bold text-accent">Rs. {price.toLocaleString()}</div>
-                    <div className="mt-3">
-                      <GradientButton width="100%" height="36px">
-                        <span className="text-xs">Select</span>
-                      </GradientButton>
+                    <div className="relative z-10">
+                      <span className="text-lg sm:text-xl font-black text-zinc-900 dark:text-white">{days}</span>
+                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-medium ml-0.5">days</span>
                     </div>
+                    <div className="relative z-10 mt-1 text-sm sm:text-base font-bold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                      Rs. {price.toLocaleString()}
+                    </div>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/[0.03] to-cyan-500/[0.03] dark:from-blue-400/[0.05] dark:to-cyan-400/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </button>
                 ))}
               </div>

@@ -9,7 +9,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Practice Package', href: '/practice-package' },
+    { label: 'Buy MockTest', href: '/practice-package' },
     { label: 'Date Booking', href: '/date-booking' },
     { label: 'Downloads', href: '/downloads' },
   ];

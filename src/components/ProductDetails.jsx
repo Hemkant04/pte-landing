@@ -31,7 +31,7 @@ export default function ProductDetails() {
               <div className="w-12 h-12 bg-zinc-100 dark:bg-white/10 rounded-xl flex items-center justify-center ring-1 ring-zinc-200 dark:ring-white/20 transition-colors duration-300">
                 <PlayCircle className="w-6 h-6 text-accent" />
               </div>
-              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white transition-colors duration-300">PTE Mock Test Practice Package</h3>
+              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white transition-colors duration-300">PTE Mock Test</h3>
             </div>
 
             <div className="mb-6">

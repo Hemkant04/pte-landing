@@ -38,7 +38,7 @@ export default function Footer() {
             <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors duration-300">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link to="/" className="hover:text-accent transition-colors">Home</Link></li>
-              <li><Link to="/practice-package" className="hover:text-accent transition-colors">Practice Package</Link></li>
+              <li><Link to="/practice-package" className="hover:text-accent transition-colors">Buy MockTest</Link></li>
               <li><Link to="/date-booking" className="hover:text-accent transition-colors">Date Booking</Link></li>
               <li><Link to="/downloads" className="hover:text-accent transition-colors">Downloads</Link></li>
             </ul>
