@@ -220,7 +220,7 @@ export default function PTEBookingFlow({ onClose }) {
                     <Info className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">{selectedType.name}</p>
+                    <p className="font-semibold text-sm text-zinc-900 dark:text-white">{selectedType.name}</p>
                     <p className="text-xs text-zinc-500">
                       {examOption === 'first' ? 'First Exam' : 'Rebook'}
                       {examOption === 'first' && accountStatus === 'has-account' ? ' — Has Account' : ''}
@@ -232,14 +232,14 @@ export default function PTEBookingFlow({ onClose }) {
 
               {/* Date & Center fields (common to all) */}
               <div>
-                <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Preferred Exam Date</label>
+                <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Preferred Exam Date</label>
                 <div className="relative">
                   <CalendarDays className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400 pointer-events-none" />
                   <input type="date" value={examDate} onChange={(e) => setExamDate(e.target.value)} required className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all [color-scheme:light] dark:[color-scheme:dark]" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Test City</label>
+                <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Test City</label>
                 <select value={examCity} onChange={(e) => { setExamCity(e.target.value); setExamCenter('') }} required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all">
                   <option value="">Select city</option>
                   {Object.entries(cities).map(([key, city]) => (
@@ -249,7 +249,7 @@ export default function PTEBookingFlow({ onClose }) {
               </div>
               {examCity && (
                 <div>
-                  <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Test Center</label>
+                  <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Test Center</label>
                   <select value={examCenter} onChange={(e) => setExamCenter(e.target.value)} required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all">
                     <option value="">Select center</option>
                     {cities[examCity].centers.map((center) => (
@@ -263,19 +263,19 @@ export default function PTEBookingFlow({ onClose }) {
               {accountStatus === 'has-account' && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Full Name</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Full Name</label>
                     <input type="text" value={form.name} onChange={(e) => updateForm('name', e.target.value)} placeholder="Enter your full name" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">PTE Username</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">PTE Username</label>
                     <input type="text" value={form.username} onChange={(e) => updateForm('username', e.target.value)} placeholder="Your Pearson PTE username" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">PTE Password</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">PTE Password</label>
                     <input type="password" value={form.password} onChange={(e) => updateForm('password', e.target.value)} placeholder="Your Pearson PTE password" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Passport (Photo or PDF)</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Passport (Photo or PDF)</label>
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-zinc-50 dark:bg-white/5 border border-dashed border-zinc-300 dark:border-white/20">
                       <Upload className="w-5 h-5 text-zinc-400" />
                       <span className="text-sm text-zinc-500 dark:text-zinc-400 flex-1">{passportFile ? passportFile.name : 'Upload passport photo or PDF'}</span>
@@ -290,15 +290,15 @@ export default function PTEBookingFlow({ onClose }) {
               {accountStatus === 'need-account' && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Email Address</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Email Address</label>
                     <input type="email" value={form.email} onChange={(e) => updateForm('email', e.target.value)} placeholder="Your email address" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Phone Number</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Phone Number</label>
                     <input type="tel" value={form.phone} onChange={(e) => updateForm('phone', e.target.value)} placeholder="Your phone number" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">Passport (Photo or PDF)</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Passport (Photo or PDF)</label>
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-zinc-50 dark:bg-white/5 border border-dashed border-zinc-300 dark:border-white/20">
                       <Upload className="w-5 h-5 text-zinc-400" />
                       <span className="text-sm text-zinc-500 dark:text-zinc-400 flex-1">{passportFile ? passportFile.name : 'Upload passport photo or PDF'}</span>
@@ -313,11 +313,11 @@ export default function PTEBookingFlow({ onClose }) {
               {examOption === 'rebook' && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">PTE Username</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">PTE Username</label>
                     <input type="text" value={form.username} onChange={(e) => updateForm('username', e.target.value)} placeholder="Your Pearson PTE username" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">PTE Password</label>
+                    <label className="block text-sm font-medium mb-1 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">PTE Password</label>
                     <input type="password" value={form.password} onChange={(e) => updateForm('password', e.target.value)} placeholder="Your Pearson PTE password" required className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
                   </div>
                 </>
