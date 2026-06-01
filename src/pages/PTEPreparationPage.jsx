@@ -278,11 +278,11 @@ export default function PTEPreparationPage() {
                   </GradientButton>
                 </Link>
                 
-                <a href="https://findseats.pearsonvue.com/testtaker/registration/CombinedTestCenterSearchPage/PEARSONLANGUAGE?_gl=1*lpbdt3*_ga*MTkwMDkyOTk5NC4xNzcwNDY2Nzk3*_ga_43G27JB6DV*czE3ODAxNTU1NjYkbzE1MCRnMSR0MTc4MDE1NTU2NiRqNjAkbDAkaDEyMDM4OTM0MjE.&conversationId=27300" target="_blank" className="w-full sm:w-auto">
+                <a href="https://mypte.pearsonpte.com/test/search?examCode=PTE-A" target="_blank" className="w-full sm:w-auto">
                   <GradientButton width="100%" height="50px">
                     <span className="flex items-center justify-center gap-2">
                       <CalendarDays className="w-4 h-4" />
-                      Check Exam Date
+                      Check PTE Date
                     </span>
                   </GradientButton>
                 </a>
