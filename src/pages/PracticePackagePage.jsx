@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { X, Check, Clock, Sparkles } from 'lucide-react'
+import { X, Check, Clock, Sparkles, ArrowRight } from 'lucide-react'
 import GradientButton from '../components/ui/GradientButton'
 import ExamBookingForm from '../components/ExamBookingForm'
+
 const packages = [
   {
     id: 'apeuni',
@@ -76,52 +77,89 @@ export default function PracticePackagePage() {
   const [bookingForm, setBookingForm] = useState(null)
 
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-20 sm:pt-24 pb-16 sm:pb-20 transition-colors duration-300 overflow-hidden">
+    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-24 pb-16 sm:pt-32 sm:pb-24 transition-colors duration-300 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-zinc-50 to-white dark:from-zinc-900 dark:via-zinc-950 dark:to-black transition-colors duration-300" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200/50 dark:border-white/10 bg-white/50 dark:bg-white/5 px-4 py-2 backdrop-blur-md mb-6">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 flex items-center gap-2">
+              Unlimited Mock Tests
+              <Sparkles className="w-4 h-4 text-accent" />
+            </span>
+          </div>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-900 dark:text-white mb-4 transition-colors duration-300">
             <span className="bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
               Buy
             </span>{' '}
             MockTest
           </h1>
-          <p className="text-sm sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto transition-colors duration-300">
             Select a platform that suits your preparation style. Unlock unlimited mock tests and track your progress.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 sm:gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-16">
           {packages.map((pkg) => (
             <button
               key={pkg.id}
               onClick={() => setSelected(pkg)}
-              className="group text-left bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-5 sm:p-8 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative"
+              className={`group text-left bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1 relative flex flex-col ${
+                pkg.popular
+                  ? 'border-accent/50 ring-2 ring-accent/20'
+                  : 'border-zinc-200/50 dark:border-white/10 hover:border-accent/30'
+              }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-accent text-zinc-950 px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <Sparkles className="w-4 h-4" />
-                    Popular
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-accent text-zinc-950 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-1 shadow-lg">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Most Popular
                   </span>
                 </div>
               )}
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl overflow-hidden mb-3 sm:mb-6 group-hover:scale-110 transition-transform shadow-lg ring-1 ring-zinc-200/50 dark:ring-white/10">
-                <img src={pkg.logoSrc} alt={pkg.name} className="w-full h-full object-contain" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden mb-5 sm:mb-6 group-hover:scale-110 transition-transform shadow-lg ring-1 ring-zinc-200/50 dark:ring-white/10 bg-white dark:bg-zinc-800">
+                <img src={pkg.logoSrc} alt={pkg.name} className="w-full h-full object-contain p-2" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-1 transition-colors duration-300">{pkg.name}</h3>
-              <p className="text-xs sm:text-sm font-medium text-accent mb-2 sm:mb-3">{pkg.tagline}</p>
-              <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed transition-colors duration-300">{pkg.description}</p>
-              <div className="mt-4 sm:mt-6">
-                <span className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">
-                  View Plans & Pricing →
+              <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-2 transition-colors duration-300">{pkg.name}</h3>
+              <p className="text-xs sm:text-sm font-medium text-accent mb-3">{pkg.tagline}</p>
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed transition-colors duration-300 mb-6 flex-1">{pkg.description}</p>
+              <div className="mt-auto pt-4 border-t border-zinc-200 dark:border-white/10">
+                <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors flex items-center gap-2">
+                  View Plans & Pricing
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
             </button>
           ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-zinc-200/50 dark:border-white/10">
+            <h3 className="text-lg sm:text-xl font-semibold text-zinc-900 dark:text-white mb-6 flex items-center gap-2">
+              <Check className="w-5 h-5 text-accent" />
+              What's Included in All Packages
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                'Unlimited scored mock tests',
+                'AI-powered scoring & feedback',
+                'Real PTE exam simulation',
+                'Section-wise performance analysis',
+                '24/7 platform access',
+                'Detailed answer explanations',
+                'Performance tracking dashboard',
+                'Score improvement tips',
+              ].map((feature, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-zinc-700 dark:text-zinc-300">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -143,30 +181,31 @@ export default function PracticePackagePage() {
             className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
+            <div className="flex items-center justify-between px-6 sm:px-8 pt-6 sm:pt-8 pb-5 border-b border-zinc-200 dark:border-white/10">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 ring-1 ring-zinc-200/50 dark:ring-white/10">
-                  <img src={selected.logoSrc} alt={selected.name} className="w-full h-full object-contain" />
+                <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 ring-1 ring-zinc-200/50 dark:ring-white/10 bg-white dark:bg-zinc-800">
+                  <img src={selected.logoSrc} alt={selected.name} className="w-full h-full object-contain p-2" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">{selected.name}</h2>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">{selected.tagline}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">{selected.name}</h2>
+                  <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">{selected.tagline}</p>
                 </div>
               </div>
               <button
                 onClick={() => setSelected(null)}
                 className="p-2 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
+                aria-label="Close modal"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="p-5 sm:p-8">
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-white mb-4 sm:mb-6 flex items-center gap-2">
+            <div className="p-6 sm:p-8">
+              <h3 className="text-lg sm:text-xl font-semibold text-zinc-900 dark:text-white mb-6 flex items-center gap-2">
                 <Clock className="w-5 h-5 text-accent" />
                 Select Duration
               </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                 {planPricing[selected.id].durations.map(({ days, price }) => (
                   <button
                     key={days}
@@ -174,26 +213,25 @@ export default function PracticePackagePage() {
                       setBookingForm({ label: `${selected.name} — ${days} Days`, price: price.toLocaleString(), color: selected.color, logoSrc: selected.logoSrc })
                       setSelected(null)
                     }}
-                    className="group relative flex-1 min-w-[90px] sm:min-w-[110px] bg-white dark:bg-white/[0.06] rounded-2xl px-3 sm:px-4 py-3 border border-zinc-200/60 dark:border-white/10 hover:border-accent/50 hover:shadow-xl hover:-translate-y-1 hover:bg-accent/[0.04] dark:hover:bg-accent/[0.08] transition-all duration-300 text-center"
+                    className="group relative bg-white dark:bg-white/[0.06] rounded-2xl px-4 py-4 border border-zinc-200/60 dark:border-white/10 hover:border-accent/50 hover:shadow-xl hover:-translate-y-1 hover:bg-accent/[0.04] dark:hover:bg-accent/[0.08] transition-all duration-300 text-center"
                   >
-                    <div className="relative z-10">
-                      <span className="text-lg sm:text-xl font-black text-zinc-900 dark:text-white">{days}</span>
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-medium ml-0.5">days</span>
+                    <div className="mb-2">
+                      <span className="text-2xl font-black text-zinc-900 dark:text-white">{days}</span>
+                      <span className="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-medium ml-1">days</span>
                     </div>
-                    <div className="relative z-10 mt-1 text-sm sm:text-base font-bold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                    <div className="text-base font-bold bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
                       Rs. {price.toLocaleString()}
                     </div>
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/[0.03] to-cyan-500/[0.03] dark:from-blue-400/[0.05] dark:to-cyan-400/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </button>
                 ))}
               </div>
 
-              <div className="mt-6 sm:mt-8 p-4 sm:p-5 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-200/50 dark:border-white/10">
-                <h4 className="font-semibold text-zinc-900 dark:text-white mb-3 flex items-center gap-2">
+              <div className="mt-8 p-5 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-200/50 dark:border-white/10">
+                <h4 className="font-semibold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                   <Check className="w-4 h-4 text-accent" />
                   What's Included
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />Unlimited scored mock tests</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />AI-powered scoring & feedback</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-accent flex-shrink-0" />Real PTE exam simulation</li>

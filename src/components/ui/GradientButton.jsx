@@ -1,9 +1,18 @@
 'use client';
 
+const sizeVariants = {
+  sm: { width: '120px', height: '36px', text: 'text-xs' },
+  md: { width: '160px', height: '44px', text: 'text-sm' },
+  lg: { width: '200px', height: '52px', text: 'text-base' },
+  xl: { width: '240px', height: '56px', text: 'text-lg' },
+  full: { width: '100%', height: '52px', text: 'text-base' },
+};
+
 const GradientButton = ({
   children,
-  width = '200px',
-  height = '50px',
+  size = 'lg',
+  width,
+  height,
   className = '',
   onClick,
   disabled = false,
@@ -16,6 +25,11 @@ const GradientButton = ({
       onClick?.();
     }
   };
+
+  const sizeConfig = sizeVariants[size] || sizeVariants.lg;
+  const finalWidth = width || sizeConfig.width;
+  const finalHeight = height || sizeConfig.height;
+  const textSize = sizeConfig.text;
 
   return (
     <div className="text-[#eee] text-center inline-block">
@@ -32,15 +46,15 @@ const GradientButton = ({
           ${className}
         `}
         style={{
-          minWidth: width,
-          height: height,
+          minWidth: finalWidth,
+          height: finalHeight,
         }}
         onClick={disabled ? undefined : onClick}
         onKeyDown={handleKeyDown}
         aria-disabled={disabled}
         {...props}
       >
-        <span className="relative z-10 text-white flex items-center justify-center font-semibold text-sm px-6">
+        <span className={`relative z-10 text-white flex items-center justify-center font-semibold ${textSize} px-6`}>
           {children}
         </span>
       </div>

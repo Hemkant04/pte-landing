@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apenepal.com.np/sitemap.xml
+# Sitemap location
+Sitemap: https://www.apenepal.com.np/sitemap.xml
+
+# Crawl rate - moderate for all bots
+Crawl-delay: 1
