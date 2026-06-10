@@ -1,4 +1,4 @@
-import { PlayCircle, Phone, ArrowRight } from 'lucide-react';
+import { PlayCircle, Phone } from 'lucide-react';
 import GradientButton from './ui/GradientButton.jsx';
 
 export default function FinalCTA() {

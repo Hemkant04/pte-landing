@@ -40,7 +40,7 @@ const plans = [
   },
   {
     name: 'Combo Package',
-    price: '29000',
+    price: '29,000',
     period: 'save Rs. 500',
     description: '10 days Apeuni + Date booking',
     features: [

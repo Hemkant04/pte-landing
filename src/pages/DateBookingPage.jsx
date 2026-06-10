@@ -284,66 +284,66 @@ export default function DateBookingPage() {
             className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-zinc-200 dark:border-white/10">
-              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg flex-shrink-0">
-                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <div className="flex items-center justify-between px-6 sm:px-8 pt-6 sm:pt-8 pb-5 border-b border-zinc-200 dark:border-white/10">
+              <div className="flex items-center gap-4 min-w-0">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg flex-shrink-0">
+                  <BookOpen className="w-6 h-6 text-white" />
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-lg sm:text-2xl font-bold text-zinc-900 dark:text-white truncate">IELTS Exam Providers</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white truncate">IELTS Exam Providers</h2>
                   <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 truncate">Select your preferred test provider and format</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowIELTSModal(false)}
                 className="p-2 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors flex-shrink-0"
+                aria-label="Close modal"
               >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="p-5 sm:p-8">
+            <div className="p-6 sm:p-8">
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 {ieltsProviders.map((provider) => (
                   <div
                     key={provider.id}
-                    className="group bg-zinc-50 dark:bg-white/5 rounded-2xl p-5 sm:p-6 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                    className="group bg-zinc-50 dark:bg-white/5 rounded-2xl p-6 border border-zinc-200/50 dark:border-white/10 hover:border-accent/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
                   >
-                    <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-gradient-to-br from-red-500/10 to-rose-500/10 dark:from-red-400/10 dark:to-rose-400/10 blur-2xl pointer-events-none" />
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${provider.color} flex items-center justify-center shadow-md`}>
-                          <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${provider.color} flex items-center justify-center shadow-md`}>
+                          <BookOpen className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">{provider.name}</h3>
-                          <p className="text-[11px] text-zinc-500 dark:text-zinc-400">{provider.formats.length} formats available</p>
+                          <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{provider.name}</h3>
+                          <p className="text-xs text-zinc-500 dark:text-zinc-400">{provider.formats.length} formats available</p>
                         </div>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">
                         {provider.description}
                       </p>
                       <div className="space-y-3">
                         {provider.formats.map((format) => {
                           const Icon = format.icon
                           return (
-                            <div key={format.mode} className="bg-white dark:bg-zinc-800/50 rounded-xl p-3 sm:p-4 border border-zinc-200/50 dark:border-white/10 group-hover:border-accent/30 transition-all duration-300">
-                              <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                                <div className="p-1.5 rounded-lg bg-accent/10">
-                                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                            <div key={format.mode} className="bg-white dark:bg-zinc-800/50 rounded-xl p-4 border border-zinc-200/50 dark:border-white/10 group-hover:border-accent/30 transition-all duration-300">
+                              <div className="flex items-center gap-3 mb-2">
+                                <div className="p-2 rounded-lg bg-accent/10">
+                                  <Icon className="w-5 h-5 text-accent" />
                                 </div>
-                                <span className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-white">{format.mode}</span>
+                                <span className="text-base font-semibold text-zinc-900 dark:text-white">{format.mode}</span>
                               </div>
-                              <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 mb-3 pl-8 sm:pl-9">{format.desc}</p>
-                              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 pl-8 sm:pl-9">
-                                <span className="text-lg sm:text-2xl font-black bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                              <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 pl-9">{format.desc}</p>
+                              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-9">
+                                <span className="text-xl font-black bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
                                   Rs. {format.price}
                                 </span>
                                 <button onClick={() => {
                                   setShowIELTSModal(false)
                                   setBookingForm({ label: `${provider.name} — ${format.mode}`, price: format.price, color: provider.color })
                                 }} className="w-full sm:w-auto">
-                                  <GradientButton width="100%" height="36px">
+                                  <GradientButton size="sm">
                                     <span className="text-xs">Book Now</span>
                                   </GradientButton>
                                 </button>

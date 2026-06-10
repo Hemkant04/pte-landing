@@ -12,17 +12,65 @@
   }
 }
 
-/* Rotating Gradient Animation for GradientButton */
+/* Rotating Gradient Animation for GradientButton - Optimized */
 @keyframes rotating-gradient {
-  0% {
+  0%, 100% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
   }
-  100% {
-    background-position: 0% 50%;
+}
+
+/* GPU-accelerated fade in animation - replace inline styles */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeSlideIn 0.6s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.delay- {
+  animation-delay: 0.1s;
+}
+
+.delay- {
+  animation-delay: 0.2s;
+}
+
+.delay- {
+  animation-delay: 0.3s;
+}
+
+.delay- {
+  animation-delay: 0.4s;
+}
+
+.delay- {
+  animation-delay: 0.5s;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
 }
 
 .rotating-gradient {
@@ -34,7 +82,7 @@
     #ff9d4d 75%,
     #ffcd75 100%
   );
-  background-size: 300% 100%;
+  background-size:asmaju nu300% 100%;
   animation: rotating-gradient 3s ease infinite;
   box-shadow: 0 0 20px rgba(255, 205, 117, 0.3);
 }
@@ -44,4 +92,3 @@
   transform: scale(1.02);
   transition: transform 0.2s ease;
 }
-
