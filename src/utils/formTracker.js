@@ -85,6 +85,7 @@ const sendEmailNotification = async (data) => {
       config.serviceID,
       config.templateID,
       {
+        to_email: 'sahmanoj647@gmail.com',
         student_name: data.student_name,
         student_email: data.student_email,
         student_phone: data.student_phone,
