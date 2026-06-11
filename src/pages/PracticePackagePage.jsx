@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { X, Check, Clock, Sparkles, ArrowRight } from 'lucide-react'
 import GradientButton from '../components/ui/GradientButton'
 import ExamBookingForm from '../components/ExamBookingForm'
+import { trackFormSubmission, trackFormStart } from '../utils/formTracker'
 
 const packages = [
   {
@@ -75,6 +76,33 @@ const planPricing = {
 export default function PracticePackagePage() {
   const [selected, setSelected] = useState(null)
   const [bookingForm, setBookingForm] = useState(null)
+
+  const handleDurationSelect = async (pkg, durationData) => {
+    // Track form start event
+    trackFormStart(`${pkg.name} - ${durationData.days} days`);
+
+    const label = `${pkg.name} — ${durationData.days} Days`;
+    const price = durationData.price.toLocaleString();
+    
+    // Prepare form data for tracking
+    const formData = {
+      platform: pkg.name,
+      duration: durationData.days,
+      price: durationData.price,
+      label: label
+    };
+
+    // Set booking form (this will open the modal)
+    setBookingForm({ 
+      label, 
+      price, 
+      color: pkg.color, 
+      logoSrc: pkg.logoSrc 
+    });
+    setSelected(null);
+    
+    // Note: Actual submission tracking happens in ExamBookingForm when user submits
+  };
 
   return (
     <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 pt-24 pb-16 sm:pt-32 sm:pb-24 transition-colors duration-300 overflow-hidden">
@@ -209,10 +237,7 @@ export default function PracticePackagePage() {
                 {planPricing[selected.id].durations.map(({ days, price }) => (
                   <button
                     key={days}
-                    onClick={() => {
-                      setBookingForm({ label: `${selected.name} — ${days} Days`, price: price.toLocaleString(), color: selected.color, logoSrc: selected.logoSrc })
-                      setSelected(null)
-                    }}
+                    onClick={() => handleDurationSelect(selected, { days, price })}
                     className="group relative bg-white dark:bg-white/[0.06] rounded-2xl px-4 py-4 border border-zinc-200/60 dark:border-white/10 hover:border-accent/50 hover:shadow-xl hover:-translate-y-1 hover:bg-accent/[0.04] dark:hover:bg-accent/[0.08] transition-all duration-300 text-center"
                   >
                     <div className="mb-2">

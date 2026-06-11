@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { X, CreditCard, Check, ChevronRight, ArrowLeft, Upload, Info, CalendarDays } from 'lucide-react'
 import GradientButton from './ui/GradientButton'
+import { trackFormSubmission } from '../utils/formTracker'
 
 export default function ExamBookingForm({ examLabel, price, color, onClose, showPassport = true, showExamDate = true, logoSrc }) {
   const [step, setStep] = useState('form')
@@ -28,7 +29,20 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
     return msg
   }
 
-  const handleProceed = () => {
+  const handleProceed = async () => {
+    // Track the form submission
+    await trackFormSubmission({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      platform: examLabel.split('—')[0].trim(),
+      duration: examLabel.includes('Days') ? parseInt(examLabel.match(/\d+/)?.[0] || 0) : 0,
+      price: price.replace(/,/g, ''),
+      exam_date: examDate,
+      has_passport: passportFile ? true : false
+    });
+
+    // Continue with WhatsApp flow
     const msg = buildWhatsAppMessage()
     window.open(`https://wa.me/9779762419564?text=${msg}`, '_blank')
     onClose()
