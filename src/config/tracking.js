@@ -19,4 +19,4 @@ export const TRACKING_CONFIG = {
 };
 
 // 📧 Your email address for notifications
-export const NOTIFICATION_EMAIL = 'apeuninepal01@gmail.com';
+export const NOTIFICATION_EMAIL = 'hemkanta04@gmail.com';
