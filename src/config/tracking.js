@@ -3,7 +3,7 @@
 
 export const TRACKING_CONFIG = {
   // Set to true for local testing (logs to console only)
-  TEST_MODE: true,  // ← Change to false when you add real keys
+  TEST_MODE: false,  // ← Change to false when you add real keys
   
   // Get from EmailJS.com
   EMAILJS: {
