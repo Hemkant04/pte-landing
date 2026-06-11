@@ -81,21 +81,25 @@ const sendEmailNotification = async (data) => {
   }
 
   try {
+    const templateParams = {
+      to_email: 'sahmanoj647@gmail.com',
+      student_name: data.student_name,
+      student_email: data.student_email,
+      student_phone: data.student_phone,
+      platform: data.platform,
+      duration: `${data.duration_days} days`,
+      price: `Rs. ${data.price_rs}`,
+      submitted_at: new Date(data.timestamp).toLocaleString('en-NP', {
+        timeZone: 'Asia/Kathmandu'
+      })
+    };
+    
+    console.log('📧 Sending email with params:', templateParams);
+    
     await emailjs.send(
       config.serviceID,
       config.templateID,
-      {
-        to_email: 'sahmanoj647@gmail.com',
-        student_name: data.student_name,
-        student_email: data.student_email,
-        student_phone: data.student_phone,
-        platform: data.platform,
-        duration: `${data.duration_days} days`,
-        price: `Rs. ${data.price_rs}`,
-        submitted_at: new Date(data.timestamp).toLocaleString('en-NP', {
-          timeZone: 'Asia/Kathmandu'
-        })
-      },
+      templateParams,
       config.publicKey
     );
     console.log('✅ Email notification sent to', TRACKING_CONFIG.NOTIFICATION_EMAIL);

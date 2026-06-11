@@ -29,8 +29,8 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
     return msg
   }
 
-  const handleProceed = async () => {
-    // Track the form submission
+  const handleProceedToPayment = async () => {
+    // Track the form submission BEFORE showing payment
     await trackFormSubmission({
       name: form.name,
       email: form.email,
@@ -42,6 +42,11 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
       has_passport: passportFile ? true : false
     });
 
+    // Move to payment step
+    setStep('payment');
+  }
+
+  const handleProceedToWhatsApp = () => {
     // Continue with WhatsApp flow
     const msg = buildWhatsAppMessage()
     window.open(`https://wa.me/9779762419564?text=${msg}`, '_blank')
@@ -148,7 +153,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
               )}
 
               <button
-                onClick={() => setStep('payment')}
+                onClick={handleProceedToPayment}
                 disabled={!form.name || !form.email || !form.phone || (showExamDate && !examDate) || (showPassport && !passportFile)}
                 className="w-full disabled:opacity-40"
               >
@@ -210,7 +215,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
                 </div>
               )}
 
-              <button onClick={handleProceed} className="w-full">
+              <button onClick={handleProceedToWhatsApp} className="w-full">
                 <GradientButton width="100%" height="52px">
                   <span className="flex items-center justify-center gap-2">
                     <Check className="w-5 h-5" />
