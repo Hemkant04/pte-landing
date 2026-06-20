@@ -64,11 +64,10 @@ const planPricing = {
   gurully: {
     label: 'Gurully',
     durations: [
-      { days: 7, price: 849 },
-      { days: 10, price: 1049 },
-      { days: 15, price: 1249 },
-      { days: 30, price: 1799 },
-      { days: 60, price: 2349 },
+      { days: 7, price: 949 },
+      { days: 15, price: 1449 },
+      { days: 30, price: 1899 },
+      { days: 60, price: 2599 },
     ],
   },
 }
@@ -155,10 +154,10 @@ export default function PracticePackagePage() {
               <p className="text-xs sm:text-sm font-medium text-accent mb-3">{pkg.tagline}</p>
               <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed transition-colors duration-300 mb-6 flex-1">{pkg.description}</p>
               <div className="mt-auto pt-4 border-t border-zinc-200 dark:border-white/10">
-                <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors flex items-center gap-2">
-                  View Plans & Pricing
-                  <ArrowRight className="w-4 h-4" />
-                </span>
+<span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-all duration-300 flex items-center gap-2 group-hover:scale-105 group-hover:rotate-1">
+                    View Plans & Pricing
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
               </div>
             </button>
           ))}
