@@ -30,7 +30,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
   }
 
   const handleProceedToPayment = async () => {
-    // Track the form submission BEFORE showing payment
+    // Track the form submission and send email
     await trackFormSubmission({
       name: form.name,
       email: form.email,
@@ -42,15 +42,9 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
       has_passport: passportFile ? true : false
     });
 
-    // Move to payment step
-    setStep('payment');
-  }
-
-  const handleProceedToWhatsApp = () => {
-    // Continue with WhatsApp flow
-    const msg = buildWhatsAppMessage()
-    window.open(`https://wa.me/9779762419564?text=${msg}`, '_blank')
-    onClose()
+    // Show success message and disable further interaction
+    alert('Thank you! Your details have been recorded. We will contact you shortly.');
+    onClose();
   }
 
   return (
@@ -81,20 +75,9 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
         </div>
 
         <div className="p-5 sm:p-8">
-          <div className="flex items-center gap-2 mb-6 sm:mb-8 text-xs font-medium text-zinc-400">
-            {['Details', 'Payment'].map((label, i) => {
-              const stepIndex = step === 'form' ? 0 : 1
-              return (
-                <div key={label} className="flex items-center gap-2">
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${i <= stepIndex ? 'bg-accent text-zinc-950' : 'bg-zinc-200 dark:bg-white/10 text-zinc-400'}`}>
-                    {i + 1}
-                  </div>
-                  <span className={i <= stepIndex ? 'text-zinc-900 dark:text-white' : ''}>{label}</span>
-                  {i < 1 && <ChevronRight className="w-3 h-3" />}
-                </div>
-              )
-            })}
-          </div>
+<div className="text-center mb-6 sm:mb-8">
+  <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Complete Your Booking</span>
+</div>
 
           {/* Step: Form */}
           {step === 'form' && (
@@ -159,7 +142,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
               >
                 <GradientButton width="100%" height="48px">
                   <span className="flex items-center justify-center gap-2">
-                    Proceed to Payment
+                    Submit Details
                     <ChevronRight className="w-4 h-4" />
                   </span>
                 </GradientButton>
@@ -167,68 +150,7 @@ export default function ExamBookingForm({ examLabel, price, color, onClose, show
             </div>
           )}
 
-          {/* Step: Payment */}
-          {step === 'payment' && (
-            <div className="space-y-6">
-              <div className="bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10">
-                <h3 className="font-semibold mb-1 flex items-center gap-2 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                  <CreditCard className="w-5 h-5 text-accent" />
-                  Payment Details
-                </h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
-                  Scan the QR code below to pay <strong className="text-accent">Rs. {price}</strong> for {examLabel}.
-                </p>
-                <div className="flex justify-center mb-4">
-                  <div className="w-56 h-56 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-white/10 flex items-center justify-center">
-                    <img src="/qr.jpeg" alt="Payment QR Code" className="w-48 h-48 object-contain" onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.nextSibling.style.display = 'flex'
-                    }} />
-                    <div className="hidden w-48 h-48 items-center justify-center text-sm text-zinc-400">
-                      <p className="text-center">Place QR code as <code className="text-accent">public/qr.jpeg</code></p>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center">After payment, click below to proceed</p>
-              </div>
 
-              <div className="bg-zinc-50 dark:bg-white/5 rounded-xl p-5 border border-zinc-200/50 dark:border-white/10">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                  <Check className="w-4 h-4 text-accent" />
-                  Booking Summary
-                </h4>
-                <div className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-                  <p><span className="text-zinc-500">Exam:</span> {examLabel}</p>
-                  {showExamDate && <p><span className="text-zinc-500">Preferred Date:</span> {examDate || 'Not selected'}</p>}
-                  <p><span className="text-zinc-500">Name:</span> {form.name}</p>
-                  <p><span className="text-zinc-500">Email:</span> {form.email}</p>
-                  <p><span className="text-zinc-500">Phone:</span> {form.phone}</p>
-                  {showPassport && <p><span className="text-zinc-500">Passport:</span> {passportFile ? passportFile.name : 'Attached'}</p>}
-                  <p className="pt-2 font-bold text-base bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 dark:from-blue-400 dark:via-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">Total: Rs. {price}</p>
-                </div>
-              </div>
-
-              {showPassport && (
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4 text-sm text-amber-800 dark:text-amber-300">
-                  <p className="font-medium mb-1">📎 After WhatsApp opens:</p>
-                  <p>Please attach your passport photo or PDF file in the chat and send it along with the message.</p>
-                </div>
-              )}
-
-              <button onClick={handleProceedToWhatsApp} className="w-full">
-                <GradientButton width="100%" height="52px">
-                  <span className="flex items-center justify-center gap-2">
-                    <Check className="w-5 h-5" />
-                    Payment Done — Proceed to WhatsApp
-                  </span>
-                </GradientButton>
-              </button>
-
-              <button onClick={() => setStep('form')} className="text-sm text-zinc-500 hover:text-accent transition-colors flex items-center gap-1">
-                <ArrowLeft className="w-4 h-4" /> Back
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
