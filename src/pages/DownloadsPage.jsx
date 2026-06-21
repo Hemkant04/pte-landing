@@ -5,10 +5,10 @@ const downloads = [
   {
     title: 'PTE Prediction June 22 - June 28',
     description: 'Weekly prediction for PTE Academic exam topics and questions based on recent trends.',
-    fileName: 'downloads/PTE prediction june 22 - june 28.pdf',
+    fileName: 'downloads/PTE Academic - Prediction File (22nd June 2026 – 28th June 2026).pdf',
     icon: FileText,
     color: 'from-green-500 to-emerald-600',
-    size: '2.1 MB',
+    size: '6.4 MB',
     pages: '15 pages',
   },
   {
