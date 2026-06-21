@@ -104,8 +104,8 @@ export default function AboutPage() {
                   <a href="https://www.facebook.com/apeuninepal/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-zinc-100 dark:bg-white/10 rounded-xl flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors overflow-hidden p-2">
                     <img src="/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
                   </a>
-                  <a href="https://www.instagram.com/apeunidigitalnepal/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-zinc-100 dark:bg-white/10 rounded-xl flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors overflow-hidden p-2">
-                    <img src="/instagram.jpg" alt="Instagram" className="w-full h-full object-contain" />
+<a href="https://www.instagram.com/apeuninepal__" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-zinc-100 dark:bg-white/10 rounded-xl flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors overflow-hidden p-2">
+                <img src="/instagram.jpg" alt="Instagram" className="w-full h-full object-contain" />
                   </a>
                   <a href="https://www.tiktok.com/@apeuninepal" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-zinc-100 dark:bg-white/10 rounded-xl flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors overflow-hidden p-2">
                     <img src="/tiktok.png" alt="TikTok" className="w-full h-full object-contain" />

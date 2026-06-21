@@ -20,7 +20,7 @@ export default function Footer() {
               <a href="https://www.facebook.com/apeuninepal/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-100 dark:bg-white/10 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors duration-300 overflow-hidden p-1.5">
                 <img src="/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
               </a>
-              <a href="https://www.instagram.com/apeunidigitalnepal/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-100 dark:bg-white/10 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors duration-300 overflow-hidden p-1.5">
+              <a href="https://www.instagram.com/apeuninepal__" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-100 dark:bg-white/10 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors duration-300 overflow-hidden p-1.5">
                 <img src="/instagram.jpg" alt="Instagram" className="w-full h-full object-contain" />
               </a>
               <a href="tel:+9779762419564" className="w-10 h-10 bg-zinc-100 dark:bg-white/10 rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/20 ring-1 ring-zinc-200 dark:ring-white/20 transition-colors duration-300 overflow-hidden p-1.5">

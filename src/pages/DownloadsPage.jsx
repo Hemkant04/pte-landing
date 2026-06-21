@@ -3,6 +3,15 @@ import GradientButton from '../components/ui/GradientButton'
 
 const downloads = [
   {
+    title: 'PTE Prediction June 22 - June 28',
+    description: 'Weekly prediction for PTE Academic exam topics and questions based on recent trends.',
+    fileName: 'downloads/PTE prediction june 22 - june 28.pdf',
+    icon: FileText,
+    color: 'from-green-500 to-emerald-600',
+    size: '2.1 MB',
+    pages: '15 pages',
+  },
+  {
     title: 'PTE Beginner Guide',
     description: 'A complete beginner-friendly guide covering PTE Academic format, scoring system, section-wise strategies, and essential tips.',
     fileName: 'guide.pdf',
